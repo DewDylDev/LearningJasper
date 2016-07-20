@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-07-20T14:19:05 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="600" pageHeight="850" columnWidth="560" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f275fa3-897b-4753-8c9b-51a1354d9840">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Employees"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT 	e.employeeNumber
+FROM employees e
+INNER JOIN offices o
+ON o.officeCode=e.officeCode
+INNER JOIN employees ee
+ON e.reportsTo=ee.employeeNumber
+WHERE e.employeeNumber IN (	SELECT a.employeeNumber 
+							FROM (  SELECT employeeNumber,count(*) as compt
+									FROM employees e
+                                    INNER JOIN customers c
+									ON e.employeeNumber=c.salesRepEmployeeNumber
+                                    GROUP BY employeeNumber
+                                    ORDER BY compt desc
+                                    LIMIT 3
+								 )a
+							
+							)]]>
+	</queryString>
+	<field name="employeeNumber" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<printWhenExpression><![CDATA[true]]></printWhenExpression>
+			<staticText>
+				<reportElement x="130" y="10" width="300" height="60" uuid="41249726-41d3-4d95-a2d5-811dcf488661"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Mountain" size="26"/>
+				</textElement>
+				<text><![CDATA[TOP 3 SALESMAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="260" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="20" width="560" height="230" uuid="08702005-1f9e-4b49-bc94-8fc07423af86"/>
+				<subreportParameter name="Employee">
+					<subreportParameterExpression><![CDATA[$F{employeeNumber}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["Employee.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
