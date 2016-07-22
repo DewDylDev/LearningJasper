@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-07-20T14:44:40 -->
+<!-- 2016-07-20T16:55:39 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="600" pageHeight="125" columnWidth="560" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="10" isIgnorePagination="true" uuid="5f275fa3-897b-4753-8c9b-51a1354d9840">
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
@@ -14,32 +14,15 @@
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Employees"/>
 	<queryString>
-		<![CDATA[SELECT 	e.employeeNumber
-FROM employees e
-INNER JOIN offices o
-ON o.officeCode=e.officeCode
-INNER JOIN employees ee
-ON e.reportsTo=ee.employeeNumber
-WHERE e.employeeNumber IN (	SELECT a.employeeNumber 
-							FROM (  SELECT employeeNumber,count(*) as compt
-									FROM employees e
-                                    INNER JOIN customers c
-									ON e.employeeNumber=c.salesRepEmployeeNumber
-                                    GROUP BY employeeNumber
-                                    ORDER BY compt desc
-                                    LIMIT 3
-								 )a
-							
-							)]]>
+		<![CDATA[SELECT 1
+FROM DUAL]]>
 	</queryString>
-	<field name="employeeNumber" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="1" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="104" splitType="Stretch">
 			<printWhenExpression><![CDATA[true]]></printWhenExpression>
 			<staticText>
 				<reportElement x="130" y="10" width="300" height="60" uuid="41249726-41d3-4d95-a2d5-811dcf488661"/>
@@ -48,15 +31,15 @@ WHERE e.employeeNumber IN (	SELECT a.employeeNumber
 				</textElement>
 				<text><![CDATA[TOP 3 SALESMAN]]></text>
 			</staticText>
+			<break>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="204" width="560" height="1" uuid="b8881c6e-448c-4fbd-b0d9-c3124982724a"/>
+			</break>
 		</band>
 	</title>
 	<detail>
-		<band height="50" splitType="Immediate">
+		<band height="104" splitType="Immediate">
 			<subreport>
-				<reportElement key="" mode="Opaque" x="0" y="0" width="560" height="50" isPrintInFirstWholeBand="true" backcolor="#F5F5F5" uuid="738c22fd-3158-4ebe-b682-f5190e94592f"/>
-				<subreportParameter name="Employee">
-					<subreportParameterExpression><![CDATA[$F{employeeNumber}]]></subreportParameterExpression>
-				</subreportParameter>
+				<reportElement key="" mode="Opaque" x="0" y="0" width="560" height="90" isPrintInFirstWholeBand="true" backcolor="#F5F5F5" uuid="738c22fd-3158-4ebe-b682-f5190e94592f"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["Employee.jasper"]]></subreportExpression>
 			</subreport>

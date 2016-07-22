@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-07-20T15:21:30 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Employee" pageWidth="595" pageHeight="200" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="ce7e68cb-967d-4599-aef0-eb537561484a">
+<!-- 2016-07-20T16:54:13 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Employee" pageWidth="560" pageHeight="200" columnWidth="520" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ce7e68cb-967d-4599-aef0-eb537561484a">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Employees"/>
 	<queryString>
 		<![CDATA[SELECT 	e.employeeNumber, e.lastName, e.firstName, e.email,  
 		CONCAT(e.reportsTo, " - ",ee.firstName," ", ee.lastName) as superior,
@@ -51,65 +44,65 @@ WHERE e.employeeNumber IN (	SELECT a.employeeNumber
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="159">
+		<band height="160">
 			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 			<textField>
-				<reportElement x="0" y="0" width="100" height="19" uuid="7cd5e26b-3557-4b80-95f4-db2be4691f36"/>
+				<reportElement x="0" y="5" width="100" height="19" uuid="7cd5e26b-3557-4b80-95f4-db2be4691f36"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" FIRST NAME: "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="20" width="100" height="19" uuid="57f9208b-b606-4576-9c04-e54a668066d4"/>
+				<reportElement x="0" y="25" width="100" height="19" uuid="57f9208b-b606-4576-9c04-e54a668066d4"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" LAST NAME: "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="290" y="0" width="100" height="19" uuid="5bb47c10-b082-44c4-8b61-a54d86236e15"/>
+				<reportElement x="290" y="5" width="100" height="19" uuid="5bb47c10-b082-44c4-8b61-a54d86236e15"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" SUPERIOR: "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="40" width="100" height="19" uuid="4bdd4896-df9c-490f-a2a8-3f63dc279e6b"/>
+				<reportElement x="0" y="45" width="100" height="19" uuid="4bdd4896-df9c-490f-a2a8-3f63dc279e6b"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" E-MAIL: "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="290" y="20" width="100" height="19" uuid="c0910ad2-aa4d-4a35-808d-bcb97419a4f7"/>
+				<reportElement x="290" y="25" width="100" height="19" uuid="c0910ad2-aa4d-4a35-808d-bcb97419a4f7"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" OFFICE: "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="0" width="100" height="20" uuid="37b762b9-f688-42f1-a67b-60198ee24542"/>
+				<reportElement x="100" y="5" width="100" height="20" uuid="37b762b9-f688-42f1-a67b-60198ee24542"/>
 				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="20" width="100" height="20" uuid="a00ffc32-bb40-4f04-b208-697470f1fa4f"/>
+				<reportElement x="100" y="25" width="100" height="20" uuid="a00ffc32-bb40-4f04-b208-697470f1fa4f"/>
 				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="39" width="100" height="20" uuid="3ee93fa3-d431-486d-9151-e9f317c74cf2"/>
+				<reportElement x="100" y="44" width="100" height="20" uuid="3ee93fa3-d431-486d-9151-e9f317c74cf2"/>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="390" y="20" width="100" height="20" uuid="fe50cb82-cd5e-41e6-9970-057d527dc5d0"/>
+				<reportElement x="390" y="25" width="100" height="20" uuid="fe50cb82-cd5e-41e6-9970-057d527dc5d0"/>
 				<textFieldExpression><![CDATA[$F{office}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="390" y="0" width="100" height="20" uuid="1fcb8036-34b0-4596-b8fc-80259bbdb85a"/>
+				<reportElement x="390" y="5" width="100" height="20" uuid="1fcb8036-34b0-4596-b8fc-80259bbdb85a"/>
 				<textFieldExpression><![CDATA[$F{superior}]]></textFieldExpression>
 			</textField>
 			<subreport overflowType="NoStretch">
-				<reportElement mode="Opaque" x="2" y="99" width="550" height="60" backcolor="#E3E3E3" uuid="e6ea695a-1a1e-4096-a18a-0856596f2a2d">
+				<reportElement mode="Opaque" x="0" y="98" width="520" height="62" isPrintInFirstWholeBand="true" backcolor="#E3E3E3" uuid="e6ea695a-1a1e-4096-a18a-0856596f2a2d">
 					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 				</reportElement>
 				<subreportParameter name="Employee">
@@ -119,12 +112,15 @@ WHERE e.employeeNumber IN (	SELECT a.employeeNumber
 				<subreportExpression><![CDATA["Customers.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement x="1" y="64" width="100" height="30" uuid="2ee976b3-d452-473a-8eda-759a8c57a645"/>
+				<reportElement x="1" y="67" width="100" height="30" uuid="2ee976b3-d452-473a-8eda-759a8c57a645"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="16" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[CLIENTS:]]></text>
 			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="520" height="1" backcolor="#000000" uuid="7ec69b0b-63d9-4380-b28f-635e05703646"/>
+			</rectangle>
 		</band>
 	</detail>
 </jasperReport>
